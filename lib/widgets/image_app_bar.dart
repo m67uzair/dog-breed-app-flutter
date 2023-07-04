@@ -44,22 +44,15 @@ class ImageAppBar extends StatelessWidget {
                     // mainAxisSize: MainAxisSize.min,
                     children: [
                       if (category != null)
-                        Text(category ?? "", style: const TextStyle(fontSize: 12, color: Colors.white)),
+                        Text(category ?? "", style: const TextStyle(fontSize: 18, color: Colors.white, height: 0.9)),
                       const SizedBox(height: 5),
-                      SizedBox(
-                        width: showBackButton ? 120 : null,
-                        child: Text(
-                          category == null ? title.toUpperCase() : title,
+                      Text(category == null ? title.toUpperCase() : convertString(title),
                           textAlign: showBackButton ? TextAlign.end : null,
                           // softWrap: true,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: category == null
-                              ? const TextStyle(
-                                  color: Colors.white, fontWeight: FontWeight.w900, fontSize: 24, height: 0.9)
-                              : const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                      ),
+                          style: const TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w900, fontSize: 24, height: 0.9)),
                     ],
                   ),
                 ),
@@ -69,5 +62,9 @@ class ImageAppBar extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String convertString(String input) {
+    return input.replaceAll('/', '-');
   }
 }

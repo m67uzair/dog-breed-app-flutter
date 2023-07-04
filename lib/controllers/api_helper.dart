@@ -6,8 +6,11 @@ import 'package:http/http.dart' as http;
 
 class ApiHelper {
   final List<MapEntry> _breedsList = [];
+  List _breedImagesList = [];
 
   List<MapEntry> get breedsList => _breedsList;
+
+  List get breedImagesList => _breedImagesList;
 
   Future<List<MapEntry>> getBreeds() async {
     String url = 'https://dog.ceo/api/breeds/list/all';
@@ -16,6 +19,7 @@ class ApiHelper {
 
     try {
       if (response.statusCode == 200) {
+        _breedsList.clear();
         final data = await jsonDecode(response.body.toString());
         final Map breedsMap = data['message'];
         _breedsList.addAll(breedsMap.entries.toList());
@@ -27,6 +31,30 @@ class ApiHelper {
     }
 
     return breedsList;
+  }
+
+  Future<List> getBreedImages(String breedTitle) async {
+
+    String url = 'https://dog.ceo/api/breed/${breedTitle.toLowerCase()}/images/';
+    print("URLLLLLLLLL : $url");
+    final response = await http.get(Uri.parse(url));
+
+    try {
+      if (response.statusCode == 200) {
+        _breedImagesList.clear();
+        final data = jsonDecode(response.body.toString());
+
+        print('yeeeeeesssss');
+        _breedImagesList = data['message'];
+        print('paddd ${_breedImagesList}');
+      } else {
+        Fluttertoast.showToast(msg: "Error Code: ${response.statusCode}");
+      }
+    } on Exception catch (e) {
+      Fluttertoast.showToast(msg: e.toString());
+    }
+
+    return breedImagesList;
   }
 }
 

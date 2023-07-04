@@ -95,8 +95,8 @@ class _BreedsScreenState extends State<BreedsScreen> {
                                                       Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                BreedDetailsScreen(breedTitle: breedName),
+                                                            builder: (context) => BreedDetailsScreen(
+                                                                breedTitle: '$breedName/$subBreedItem'),
                                                           ));
                                                     },
                                                   ),
