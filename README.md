@@ -2,4 +2,5 @@
 
 ## Project video:
 
-[![Video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://github.com/m67uzair/dog-breed-app-flutter/blob/main/assets/Dog%20breed%20app%20flutter.mp4)
+https://github.com/m67uzair/dog-breed-app-flutter/assets/83132473/891db2a1-9576-42f8-91db-23ae41fa0e7d
+
